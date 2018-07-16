@@ -12,9 +12,8 @@ type Props = {
 
 export class TodoItem extends Component<Props> {
   onClickLabel = async (e: MouseEvent) => {
-    const checkbox = document.querySelector(`#item${this.props.id}`);
-    checkbox.checked = !checkbox.checked;
-    document.querySelector(`#item${this.props.id}`).checked = true;
+    const checkbox = document.querySelector(`input#item${this.props.id}`);
+    if (checkbox instanceof HTMLInputElement) checkbox.checked = !checkbox.checked;
     await new Promise(resolve => setTimeout(resolve, 1200));
     this.props.toggleItem(this.props.id);
   };
@@ -22,9 +21,10 @@ export class TodoItem extends Component<Props> {
   render() {
     const {text, id, last, doneAt, filter} = this.props;
     setTimeout(() => {
-      if (last === id && document.querySelector(`.fresh`) != null) {
-        document.querySelector(`.fresh`).className = 'strikethrough';
-      }
+      // Hack for strikethrough not to execute upon insert
+      if (last !== id) return;
+      let fresh = document.querySelector(`.fresh`);
+      if (fresh) fresh.className = 'strikethrough';
     });
     return (
       <li>
@@ -35,7 +35,7 @@ export class TodoItem extends Component<Props> {
           </label>
           <ModalConsumer>
             {({showModal}) => (
-              <div className="wrapper" onClick={() => showModal(TodoModal, id, {...this.props})}>
+              <div className="wrapper" onClick={showModal(TodoModal, {...this.props, id})}>
                 <span className={`strikethrough${last === id ? ' fresh' : ''}`}>{text}</span>
               </div>
             )}
@@ -46,4 +46,3 @@ export class TodoItem extends Component<Props> {
     );
   }
 }
-

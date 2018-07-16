@@ -5,17 +5,19 @@ import React, {Component, createContext} from 'react';
 const ModalContext = createContext({
   component: null,
   props: {},
-  showModal: () => {},
+  showModal: (...args) => {},
   hideModal: () => {},
 });
 
 type Props = {
-  children: {},
+  children: React$Node, //<React$Component<any>>,
 };
 
 type State = {
-  component: ?React$Component<{}>,
+  component: ?React$Element<any>,
   props: {},
+  showModal: Function,
+  hideModal: Function,
 };
 
 export class ModalProvider extends Component<Props, State> {
@@ -41,7 +43,7 @@ export class ModalProvider extends Component<Props, State> {
     );
   }
 
-  showModal = (component: React$Component<{}>, props: Props) => {
+  showModal = (component: ?React$Element<any>, props: Props) => {
     this.setState({
       component,
       props,

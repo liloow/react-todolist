@@ -13,8 +13,8 @@ export class App extends Component<Props> {
   render() {
     return (
       <section className="todo" id="todo">
+        <h1>TODO</h1>
         <ModalProvider>
-          <h1>TODO</h1>
           <FilterList />
           <ItemList />
           <ButtonRandom />
