@@ -29,7 +29,7 @@ export const generateRamdomTodo = () => ({
   type: 'RANDOM',
 });
 
-export const fetchCatFunction = pic => ({
+export const fetchCatFunction = (pic: string) => ({
   pic,
   type: 'GET_CAT',
 });
