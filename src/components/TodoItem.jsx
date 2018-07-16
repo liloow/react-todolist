@@ -35,7 +35,7 @@ export class TodoItem extends Component<Props> {
           </label>
           <ModalConsumer>
             {({showModal}) => (
-              <div className="wrapper" onClick={showModal(TodoModal, {...this.props, id})}>
+              <div className="wrapper" onClick={() => showModal(TodoModal, {...this.props, id})}>
                 <span className={`strikethrough${last === id ? ' fresh' : ''}`}>{text}</span>
               </div>
             )}
