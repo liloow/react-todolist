@@ -330,12 +330,14 @@ input.modal_quote_block_text {
   max-width: 80%;
   margin: auto;
 }
+
 .modal_quote_block_text {
   font-size: 1.3em;
   font-family: Tiempos Text, serif;
   padding: 10px 0;
   font-style: italic;
   margin: auto;
+  cursor: text;
 }
 
 .modal_quote_block_text:before {
@@ -348,11 +350,15 @@ input.modal_quote_block_text {
 
 img {
   max-width: 90%;
-  max-height: 350px;
+  margin: auto;
+  max-height: calc(350px - 2em);
 }
 
 figure {
+  padding: 1em;
   height: 350px;
+  display: flex;
+  margin: auto;
 }
 
 p.status {

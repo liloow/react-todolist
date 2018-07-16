@@ -19,7 +19,7 @@ export class ModalTodo extends Component<Props> {
     this.props.fetchCat(pic);
   }
   close = (e: SyntheticMouseEvent<HTMLDivElement>) => {
-    if (e.target.id === 'overlay') return this.props.onRequestClose();
+    if (e.currentTarget.id === 'overlay') return this.props.onRequestClose();
   };
 
   writeChanges = (
@@ -37,7 +37,7 @@ export class ModalTodo extends Component<Props> {
   };
   render() {
     const {catPic, id} = this.props;
-    let {beingEdited, text, doneAt, last} = this.props.todos[id];
+    let {beingEdited, text, doneAt} = this.props.todos[id];
     if (modalRoot) {
       return ReacDOM.createPortal(
         <section className="modal_overlay">

@@ -60,7 +60,6 @@ export class ModalProvider extends Component<Props, State> {
     showModal: this.showModal,
     hideModal: this.hideModal,
   };
-
   render() {
     return <ModalContext.Provider value={this.state}>{this.props.children}</ModalContext.Provider>;
   }

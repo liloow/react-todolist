@@ -22,8 +22,8 @@ export class TodoItem extends Component<Props> {
   render() {
     const {text, id, last, doneAt, filter} = this.props;
     setTimeout(() => {
-      if (last === id && document.querySelector(`.fresh`)) {
-        document.querySelector(`.fresh`).classList = 'strikethrough';
+      if (last === id && document.querySelector(`.fresh`) != null) {
+        document.querySelector(`.fresh`).className = 'strikethrough';
       }
     });
     return (
@@ -46,11 +46,4 @@ export class TodoItem extends Component<Props> {
     );
   }
 }
-// {beingEdited && (
-//   <input
-//     className="strikethrough edit"
-//     type="text"
-//     onBlur={this.handleEdit}
-//     defaultValue={text}
-//     autoFocus
-//   />
+

@@ -1,5 +1,5 @@
 // @flow
-import {Todo, Action} from '../types/types';
+import {Action} from '../types/types';
 
 const filters = (state: boolean = false, action: Action) => {
   switch (action.type) {
